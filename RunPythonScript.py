@@ -3,9 +3,9 @@ import lxml
 import requests
 import mysql.connector
 import sys
-import internshala_scrape
-import timesjobs_scrape
-import bigshyft_scrape
+import Internshala
+import BigShyft
+import TimesJobs
 
 global mydb
 
@@ -26,11 +26,11 @@ def If_database_exist(host,user,password):
     
     def Initiate_values(cur,table_name):
         global mydb
-        cur=internshala_scrape.insert_values(cur,table_name)
+        cur=Internshala.insert_values(cur,table_name)
         mydb.commit()
-        cur=timesjobs_scrape.insert_values(cur,table_name)
+        cur=TimesJobs.insert_values(cur,table_name)
         mydb.commit()
-        cur=bigshyft_scrape.insert_values(cur,table_name)
+        cur=BigShyft.insert_values(cur,table_name)
         mydb.commit()
         return cur
     
